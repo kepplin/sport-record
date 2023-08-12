@@ -84,3 +84,17 @@ calculateWins(finalArrayTeamTwo, "Soham");
 calculateWins(finalArrayTeamTwo, "Roshan");
 calculateWins(finalArrayTeamTwo, "Kunal");
 calculateWins(finalArrayTeamTwo, "Sahil");
+
+// Losses
+function calculateLosses(array, name) {
+  let losses = matchesPlayed(name) - calculateWins(array, name);
+  let lossesName = document.querySelector(`.${name}Losses`);
+  return (lossesName.textContent = losses);
+}
+console.log(calculateLosses(finalArrayTeamTwo, "Pranav"));
+console.log(calculateLosses(finalArrayTeamTwo, "Aryan"));
+console.log(calculateLosses(finalArrayTeamTwo, "Kedar"));
+console.log(calculateLosses(finalArrayTeamTwo, "Soham"));
+console.log(calculateLosses(finalArrayTeamTwo, "Roshan"));
+console.log(calculateLosses(finalArrayTeamTwo, "Kunal"));
+console.log(calculateLosses(finalArrayTeamTwo, "Sahil"));
