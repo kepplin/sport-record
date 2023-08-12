@@ -26,26 +26,16 @@ function getOccurence(array, value) {
 }
 
 // optimise this in the future
-let matchesPlayedPranav = document.querySelector(".matchesPlayedPranav");
-let matchesPlayedAryan = document.querySelector(".matchesPlayedAryan");
-let matchesPlayedKedar = document.querySelector(".matchesPlayedKedar");
-let matchesPlayedSoham = document.querySelector(".matchesPlayedSoham");
-let matchesPlayedRoshan = document.querySelector(".matchesPlayedRoshan");
-let matchesPlayedKunal = document.querySelector(".matchesPlayedKunal");
-let matchesPlayedSahil = document.querySelector(".matchesPlayedSahil");
+function matchesPlayed(name) {
+  let number = getOccurence(finalArray, name);
+  let matchesPlayedName = document.querySelector(`.matchesPlayed${name}`);
+  return (matchesPlayedName.textContent = number);
+}
 
-let matchesPranav = getOccurence(finalArray, "Pranav");
-let matchesAryan = getOccurence(finalArray, "Aryan");
-let matchesKedar = getOccurence(finalArray, "Kedar");
-let matchesSoham = getOccurence(finalArray, "Soham");
-let matchesRoshan = getOccurence(finalArray, "Roshan");
-let matchesKunal = getOccurence(finalArray, "Kunal");
-let matchesSahil = getOccurence(finalArray, "Sahil");
-
-matchesPlayedPranav.textContent = matchesPranav;
-matchesPlayedAryan.textContent = matchesAryan;
-matchesPlayedKedar.textContent = matchesKedar;
-matchesPlayedSoham.textContent = matchesSoham;
-matchesPlayedRoshan.textContent = matchesRoshan;
-matchesPlayedKunal.textContent = matchesKunal;
-matchesPlayedSahil.textContent = matchesSahil;
+matchesPlayed("Pranav");
+matchesPlayed("Aryan");
+matchesPlayed("Kedar");
+matchesPlayed("Soham");
+matchesPlayed("Roshan");
+matchesPlayed("Kunal");
+matchesPlayed("Sahil");
