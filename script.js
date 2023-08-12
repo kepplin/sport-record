@@ -2,8 +2,9 @@
 let team = Array.from(document.querySelectorAll(".team"));
 
 // Scores
-let teamOneScore = document.querySelectorAll(".teamOneScore");
-let teamTwoScore = document.querySelectorAll(".teamTwoScore");
+let teamOneScore = Array.from(document.querySelectorAll(".teamOneScore"));
+let teamTwoScore = Array.from(document.querySelectorAll(".teamTwoScore"));
+let score = Array.from(document.querySelectorAll(".score"));
 
 // Matches Played
 // Getting all the names into one array
@@ -23,7 +24,7 @@ function getOccurence(array, value) {
   array.forEach((x) => x === value && count++);
   return count;
 }
-
+// Writing out matches played for each name
 function matchesPlayed(name) {
   let number = getOccurence(finalArray, name);
   let matchesPlayedName = document.querySelector(`.matchesPlayed${name}`);
@@ -33,3 +34,53 @@ function matchesPlayed(name) {
 finalArray.forEach((name) => {
   matchesPlayed(name);
 });
+
+// Wins & Losses
+
+// THIS CODE IS NOT COMPLETE, I TOOK THE EASY WAY OUT
+// Take team 2 score and subtract from team one, if result is a positive number
+// then team 2 won, if it is a negative number then team 1 won
+
+// Get every score in one array
+// scores = [];
+// score.forEach((element) => {
+//   scoreText = element.textContent;
+//   let scoresSplit = scoreText.split(",");
+//   scores.push(scoresSplit);
+// });
+// scoresString = scores.toString();
+
+// finalArrayScores = scoresString.split(",");
+// console.log(finalArrayScores);
+
+// function determineWinner(array, nth) {}
+
+// console.log(determineWinner(finalArrayScores));
+
+// Easy way - Team two always wins
+// Get all team two players in one array
+let teamTwo = Array.from(document.querySelectorAll(".teamTwo"));
+
+let teamTwoPlayers = [];
+teamTwo.forEach((element) => {
+  let teamTwos = element.textContent;
+  let teamTwoSplit = teamTwos.split(",");
+  teamTwoPlayers.push(teamTwoSplit);
+});
+
+teamTwoString = teamTwoPlayers.toString();
+finalArrayTeamTwo = teamTwoString.split(",");
+
+function calculateWins(array, name) {
+  let wins = getOccurence(array, name);
+  let winsName = document.querySelector(`.${name}Wins`);
+  return (winsName.textContent = wins);
+}
+
+calculateWins(finalArrayTeamTwo, "Pranav");
+calculateWins(finalArrayTeamTwo, "Aryan");
+calculateWins(finalArrayTeamTwo, "Kedar");
+calculateWins(finalArrayTeamTwo, "Soham");
+calculateWins(finalArrayTeamTwo, "Roshan");
+calculateWins(finalArrayTeamTwo, "Kunal");
+calculateWins(finalArrayTeamTwo, "Sahil");
