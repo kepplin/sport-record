@@ -2,6 +2,10 @@ table {
   margin: 0 auto;
 }
 
+.matches {
+  margin-bottom: 100px;
+}
+
 /* Default Table Style */
 table {
   color: #333;
