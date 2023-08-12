@@ -71,30 +71,20 @@ teamTwo.forEach((element) => {
 teamTwoString = teamTwoPlayers.toString();
 finalArrayTeamTwo = teamTwoString.split(",");
 
-function calculateWins(array, name) {
-  let wins = getOccurence(array, name);
+function calculateWins(name) {
+  let wins = getOccurence(finalArrayTeamTwo, name);
   let winsName = document.querySelector(`.${name}Wins`);
   return (winsName.textContent = wins);
 }
 
-calculateWins(finalArrayTeamTwo, "Pranav");
-calculateWins(finalArrayTeamTwo, "Aryan");
-calculateWins(finalArrayTeamTwo, "Kedar");
-calculateWins(finalArrayTeamTwo, "Soham");
-calculateWins(finalArrayTeamTwo, "Roshan");
-calculateWins(finalArrayTeamTwo, "Kunal");
-calculateWins(finalArrayTeamTwo, "Sahil");
+finalArrayTeamTwo.forEach((name) => {
+  calculateWins(name);
+  calculateLosses(name);
+});
 
 // Losses
-function calculateLosses(array, name) {
-  let losses = matchesPlayed(name) - calculateWins(array, name);
+function calculateLosses(name) {
+  let losses = matchesPlayed(name) - calculateWins(name);
   let lossesName = document.querySelector(`.${name}Losses`);
   return (lossesName.textContent = losses);
 }
-console.log(calculateLosses(finalArrayTeamTwo, "Pranav"));
-console.log(calculateLosses(finalArrayTeamTwo, "Aryan"));
-console.log(calculateLosses(finalArrayTeamTwo, "Kedar"));
-console.log(calculateLosses(finalArrayTeamTwo, "Soham"));
-console.log(calculateLosses(finalArrayTeamTwo, "Roshan"));
-console.log(calculateLosses(finalArrayTeamTwo, "Kunal"));
-console.log(calculateLosses(finalArrayTeamTwo, "Sahil"));
