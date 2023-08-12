@@ -1,23 +1,26 @@
 // Teams
-let teamOne = Array.from(document.querySelectorAll(".teamOne"));
-
-let teamTwo = document.querySelectorAll(".teamTwo");
+let team = Array.from(document.querySelectorAll(".team"));
 
 // Scores
 let teamOneScore = document.querySelectorAll(".teamOneScore");
 let teamTwoScore = document.querySelectorAll(".teamTwoScore");
 // Matches Played
-let bigArray = [];
-teamOne.forEach((element) => {
-  abc = element.textContent;
-  let abcsplit = abc.split(",");
-  abcsplit.tostr;
-  console.log(abcsplit);
-  bigArray.push(abcsplit);
+
+// Getting all the names into one array
+let playerNames = [];
+team.forEach((element) => {
+  teams = element.textContent;
+  let teamsSplit = teams.split(",");
+  playerNames.push(teamsSplit);
 });
-stringArray = bigArray.toString();
-let array = stringArray.split(",");
-console.log(array);
-if (array.includes("Kunal")) {
-  console.log("hi");
+playerNamesString = playerNames.toString();
+
+finalArray = playerNamesString.split(",");
+
+// Getting number for each name
+
+function getOccurence(array, value) {
+  let count = 0;
+  array.forEach((x) => x === value && count++);
+  return count;
 }
