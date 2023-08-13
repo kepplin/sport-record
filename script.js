@@ -11,12 +11,12 @@ let score = Array.from(document.querySelectorAll(".score"));
 let playerNames = [];
 team.forEach((element) => {
   teams = element.textContent;
-  let teamsSplit = teams.split(",");
+  let teamsSplit = teams.split(/[ ,]+/);
   playerNames.push(teamsSplit);
 });
 playerNamesString = playerNames.toString();
 
-finalArray = playerNamesString.split(",");
+finalArray = playerNamesString.split(/[ ,]+/);
 
 // Getting number for each name
 function getOccurence(array, value) {
@@ -64,12 +64,12 @@ let teamTwo = Array.from(document.querySelectorAll(".teamTwo"));
 let teamTwoPlayers = [];
 teamTwo.forEach((element) => {
   let teamTwos = element.textContent;
-  let teamTwoSplit = teamTwos.split(",");
+  let teamTwoSplit = teamTwos.split(/[ ,]+/);
   teamTwoPlayers.push(teamTwoSplit);
 });
 
 teamTwoString = teamTwoPlayers.toString();
-finalArrayTeamTwo = teamTwoString.split(",");
+finalArrayTeamTwo = teamTwoString.split(/[ ,]+/);
 
 function calculateWins(name) {
   let wins = getOccurence(finalArrayTeamTwo, name);
