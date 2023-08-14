@@ -109,11 +109,11 @@ function tableSort(table, column, asc = true) {
   const sortedRows = rows.sort((a, b) => {
     // Get table cell at index
     const aColText = a
-      .querySelector(`td:nth-child(${column})`)
+      .querySelector(`td:nth-child(${column + 1})`)
       .textContent.trim();
 
     const bColText = b
-      .querySelector(`td:nth-child(${column})`)
+      .querySelector(`td:nth-child(${column + 1})`)
       .textContent.trim();
 
     return aColText > bColText ? 1 * dirModifier : -1 * dirModifier;
@@ -127,6 +127,32 @@ function tableSort(table, column, asc = true) {
 
   // Re-add the newly sorted rows
   tBody.append(...sortedRows);
+
+  // Remember how the column is currently sorted
+  // Removes any sorting class that may have been previously applied
+  statsTable
+    .querySelectorAll("th")
+    .forEach((th) => th.classList.remove("th-sort-asc", "th-sort-desc"));
+
+  // Adds the ascending sort class
+  statsTable
+    .querySelector(`th:nth-child(${column + 1})`)
+    .classList.toggle("th-sort-asc", asc);
+
+  // Adds the descending sort class
+  statsTable
+    .querySelector(`th:nth-child(${column + 1})`)
+    .classList.toggle("th-sort-desc", !asc);
 }
 
-tableSort(statsTable, 1);
+document.querySelectorAll(".table-sortable th").forEach((headerCell) => {
+  headerCell.addEventListener("click", () => {
+    const tableElement = headerCell.parentElement.parentElement.parentElement; // Going up 3 times on the DOM tree gives us the table element itself, lets you apply sorting code to multiple tables
+    const headerIndex = Array.prototype.indexOf.call(
+      headerCell.parentElement.children,
+      headerCell
+    );
+    const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+    tableSort(tableElement, headerIndex, !currentIsAscending);
+  });
+});
