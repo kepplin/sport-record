@@ -77,12 +77,6 @@ function calculateWins(name) {
   return (winsName.textContent = wins);
 }
 
-finalArrayTeamTwo.forEach((name) => {
-  calculateWins(name);
-  calculateLosses(name);
-  calculateWinRate(name);
-});
-
 // Losses
 function calculateLosses(name) {
   let losses = matchesPlayed(name) - calculateWins(name);
@@ -96,3 +90,11 @@ function calculateWinRate(name) {
   let winRateName = document.querySelector(`.${name}Winrate`);
   return (winRateName.textContent = winRate + "%");
 }
+
+finalArrayTeamTwo.forEach((name) => {
+  calculateWins(name);
+  calculateLosses(name);
+  calculateWinRate(name);
+});
+
+// Sort
