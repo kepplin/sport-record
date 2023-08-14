@@ -98,3 +98,35 @@ finalArrayTeamTwo.forEach((name) => {
 });
 
 // Sort
+let statsTable = document.querySelector(".stats");
+
+function tableSort(table, column, asc = true) {
+  const dirModifier = asc ? 1 : -1;
+  const tBody = table.tBodies[0]; // 1st body in the table
+  const rows = Array.from(tBody.querySelectorAll("tr")); // Selecting every row in tBody
+
+  // Sort each row
+  const sortedRows = rows.sort((a, b) => {
+    // Get table cell at index
+    const aColText = a
+      .querySelector(`td:nth-child(${column})`)
+      .textContent.trim();
+
+    const bColText = b
+      .querySelector(`td:nth-child(${column})`)
+      .textContent.trim();
+
+    return aColText > bColText ? 1 * dirModifier : -1 * dirModifier;
+  });
+
+  // Remove all existing table rows
+  // While there is a table row element in tBody, remove each one until we reach the end
+  while (tBody.firstChild) {
+    tBody.removeChild(tBody.firstChild);
+  }
+
+  // Re-add the newly sorted rows
+  tBody.append(...sortedRows);
+}
+
+tableSort(statsTable, 1);
