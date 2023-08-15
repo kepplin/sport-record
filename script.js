@@ -88,7 +88,7 @@ function calculateLosses(name) {
 function calculateWinRate(name) {
   let winRate = (calculateWins(name) / matchesPlayed(name)) * 100;
   let winRateName = document.querySelector(`.${name}Winrate`);
-  return (winRateName.textContent = winRate + "%");
+  return (winRateName.textContent = Math.round(winRate) + "%");
 }
 
 finalArrayTeamTwo.forEach((name) => {
