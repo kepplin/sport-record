@@ -59,20 +59,20 @@ finalArray.forEach((name) => {
 
 // Easy way - Team two always wins
 // Get all team two players in one array
-let teamTwo = Array.from(document.querySelectorAll(".teamTwo"));
+let winners = Array.from(document.querySelectorAll(".winners"));
 
-let teamTwoPlayers = [];
-teamTwo.forEach((element) => {
-  let teamTwos = element.textContent;
-  let teamTwoSplit = teamTwos.split(/[ ,]+/);
-  teamTwoPlayers.push(teamTwoSplit);
+let winningTeams = [];
+winners.forEach((element) => {
+  let winnersText = element.textContent;
+  let winnersSplit = winnersText.split(/[ ,]+/);
+  winningTeams.push(winnersSplit);
 });
 
-teamTwoString = teamTwoPlayers.toString();
-finalArrayTeamTwo = teamTwoString.split(/[ ,]+/);
+winnersString = winningTeams.toString();
+finalArrayWinners = winnersString.split(/[ ,]+/);
 
 function calculateWins(name) {
-  let wins = getOccurence(finalArrayTeamTwo, name);
+  let wins = getOccurence(finalArrayWinners, name);
   let winsName = document.querySelector(`.${name}Wins`);
   return (winsName.textContent = wins);
 }
@@ -91,7 +91,7 @@ function calculateWinRate(name) {
   return (winRateName.textContent = Math.round(winRate) + "%");
 }
 
-finalArrayTeamTwo.forEach((name) => {
+finalArrayWinners.forEach((name) => {
   calculateWins(name);
   calculateLosses(name);
   calculateWinRate(name);
@@ -111,7 +111,6 @@ function tableSort(table, column, asc = true) {
     const aColText = a
       .querySelector(`td:nth-child(${column + 1})`)
       .textContent.trim();
-
     const bColText = b
       .querySelector(`td:nth-child(${column + 1})`)
       .textContent.trim();
@@ -156,3 +155,5 @@ document.querySelectorAll(".table-sortable th").forEach((headerCell) => {
     tableSort(tableElement, headerIndex, !currentIsAscending);
   });
 });
+
+// Winstreak
