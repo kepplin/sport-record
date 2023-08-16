@@ -37,28 +37,6 @@ finalArray.forEach((name) => {
 
 // Wins & Losses
 
-// THIS CODE IS NOT COMPLETE, I TOOK THE EASY WAY OUT
-// Take team 2 score and subtract from team one, if result is a positive number
-// then team 2 won, if it is a negative number then team 1 won
-
-// Get every score in one array
-// scores = [];
-// score.forEach((element) => {
-//   scoreText = element.textContent;
-//   let scoresSplit = scoreText.split(",");
-//   scores.push(scoresSplit);
-// });
-// scoresString = scores.toString();
-
-// finalArrayScores = scoresString.split(",");
-// console.log(finalArrayScores);
-
-// function determineWinner(array, nth) {}
-
-// console.log(determineWinner(finalArrayScores));
-
-// Easy way - Team two always wins
-// Get all team two players in one array
 let winners = Array.from(document.querySelectorAll(".winners"));
 
 let winningTeams = [];
@@ -70,6 +48,18 @@ winners.forEach((element) => {
 
 winnersString = winningTeams.toString();
 finalArrayWinners = winnersString.split(/[ ,]+/);
+
+let losers = Array.from(document.querySelectorAll(".losers"));
+
+let losingTeams = [];
+losers.forEach((element) => {
+  let losersText = element.textContent;
+  let losersSplit = losersText.split(/[ ,]+/);
+  losingTeams.push(losersSplit);
+});
+
+losersString = losingTeams.toString();
+finalArrayLosers = losersString.split(/[ ,]+/);
 
 function calculateWins(name) {
   let wins = getOccurence(finalArrayWinners, name);
@@ -108,6 +98,7 @@ function tableSort(table, column, asc = true) {
   // Sort each row
   const sortedRows = rows.sort((a, b) => {
     // Get table cell at index
+
     const aColText = a
       .querySelector(`td:nth-child(${column + 1})`)
       .textContent.trim();
@@ -157,3 +148,21 @@ document.querySelectorAll(".table-sortable th").forEach((headerCell) => {
 });
 
 // Winstreak
+
+// function checkWinstreak(array, name) {
+//   for (let i = array.length - 1; i >= 0; i--) {
+//     let winStreak = [];
+
+//     winStreak.push(array[i]);
+//     if (!array[i].includes(name)) {
+//       break;
+//     }
+//     console.log(winStreak);
+//   }
+// }
+
+// checkWinstreak(winningTeams, "Roshan");
+
+// console.log(playerNames);
+// console.log(winningTeams);
+// console.log(losingTeams);
